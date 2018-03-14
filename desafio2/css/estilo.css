@@ -1,0 +1,132 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
+}
+h1{
+    margin: 0px;
+}
+nav{    
+    background-color: rgb(9, 163, 198);
+    float: left;
+    width: 30%;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    box-sizing: border-box; /* Para não inchar */
+    position: fixed;
+    /* direita baixo miopia cor */
+    box-shadow: 5px 0px 10px gray;
+    overflow: hidden;
+    transition: width 1s;
+}
+nav ul{
+    margin: 0px;
+    padding: 0px;
+}
+nav li{
+    padding: 10px;
+    list-style: none;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+}
+
+nav li:hover{
+    background-color: rgb(13, 101, 121);    
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+main{
+    top: 0px;
+    width: 70%;
+    padding: 40px;
+    float: right;
+    box-sizing: border-box;
+    transition: width 1s;
+}
+main h1{
+    text-align: center;
+    
+}
+
+form{
+    width: 70%;
+    margin: auto;
+}
+
+form div{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="datetime-local"],
+form input[type="number"]{
+    width: 100%;
+    padding: 10px;
+}
+
+form button{
+    background-color: rgb(9, 163, 198);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    
+}
+
+form button:hover{
+    background-color: rgb(13, 101, 121);    
+    cursor: pointer;
+    transition: background-color .3s;
+}
+
+.form_button{
+    text-align: center;
+}
+
+.split_form{
+    display: flex;
+}
+
+.split_form input{
+    margin: 5px;    
+}
+
+.btn-menu-abrir{
+    width: 20px;
+    opacity: 0;
+}
+
+.btn-menu-fechar{
+    width: 20px;
+    opacity: 0;
+}
+
+.menu-aberto{
+    width: 50%;
+}
+
+@media(max-width: 600px){
+
+    nav{
+        width: 0%;
+        padding: 0px;
+    }
+
+    main{
+        width: 100%;
+    }
+    .btn-menu-abrir{
+        opacity: 1;
+    }
+    .btn-menu-fechar{
+        opacity: 1;
+    }
+}
