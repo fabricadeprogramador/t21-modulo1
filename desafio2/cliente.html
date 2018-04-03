@@ -4,6 +4,8 @@
     <title>Cadastro de Cliente</title>
     <link rel="stylesheet" href="css/estilo.css">
     <script src="js/script.js"></script>
+    <script src="js/cadastro-cliente.js"></script>
+    
     <meta charset="UTF-8" />
 </head>
 
@@ -30,6 +32,12 @@
 
     <main>
         <img src="img/burger.svg" alt="menu" class="btn-menu-abrir" onclick="abrirMenu()">
+        
+        <div class="mensagens">
+            <span id="textoMensagem"></span>
+            <img src="img/close.svg" alt="Fechar" onclick="fecharMensagem()">
+        </div>
+        
         <h1 id="titulo">Cadastro de Cliente</h1>
 
         <form>
@@ -73,6 +81,7 @@
             <div>
                 <label for="estado">Estado</label>
                 <select name="estado">
+                    <option value="">Selecione...</option>                    
                     <option value="mt">Mato Grosso</option>
                     <option value="ms">Mato Grosso do Sul</option>
                     <option value="sp">São Paulo</option>
@@ -90,7 +99,7 @@
             </div>
 
             <div class="form_button">
-                <button>Salvar</button>
+                <button type="button" onclick="cad.validar()">Salvar</button>
             </div>
         </form>
     </main>

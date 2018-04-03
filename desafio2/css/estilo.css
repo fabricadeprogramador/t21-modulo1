@@ -113,6 +113,40 @@ form button:hover{
     width: 50%;
 }
 
+.mensagens{
+    display: none;
+    background-color: red;
+    color: white;
+    padding: 20px;
+    position: absolute;
+    width: 60%;
+    animation: slide-mensagem 1s;
+    opacity: .9;
+}
+
+.mensagens.show{
+    display: block;
+}
+
+.mensagens img{
+    cursor: pointer;
+    width: 10px;
+    float: right;
+}
+
+@keyframes slide-mensagem{
+
+    from{
+        transform: translate3d(0px, -70px, 0px);
+        opacity: 0;
+    }
+
+    to{
+        transform: translate3d(0px, 0px, 0px);
+        opacity: .9;
+    }
+}
+
 @media(max-width: 600px){
 
     nav{
