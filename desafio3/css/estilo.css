@@ -50,3 +50,13 @@ body{
     font-weight: 300;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, .1);
 }
+
+.item-lista{
+    padding: 20px 0px;
+}
+
+.item-lista img{
+    width: 20px;
+    float: right;
+    cursor: pointer;
+}

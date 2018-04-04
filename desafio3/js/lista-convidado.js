@@ -1,20 +1,34 @@
-var lista = "";
+class ListaConvidados {
 
-class ListaConvidados{
-
-    adicionar(){
+    adicionar() {
         let elementoInput = document.getElementById("inputConvidado");
         let nomeConvidado = elementoInput.value;
 
-        let lista = document.querySelector(".lista");
+        if (nomeConvidado != "") {
 
-        let itemLista = document.createElement("div");
-        let span = document.createElement("span");
-        let imagem = document.createElement("img");
+            let lista = document.querySelector(".lista");
 
-        span.innerText = nomeConvidado;
-        imagem.src = "img/garbage.svg";
+            let itemLista = document.createElement("div");
+            let span = document.createElement("span");
+            let imagem = document.createElement("img");
+
+            span.innerText = nomeConvidado;
+            imagem.src = "img/garbage.svg";
+            imagem.setAttribute('onclick', 'listaConvidados.remover()');
+
+            itemLista.classList.add('item-lista');
+            itemLista.appendChild(span);
+            itemLista.appendChild(imagem);
+
+            lista.appendChild(itemLista);
+
+        }
+        elementoInput.value = "";
+    }
+
+    remover(){
+       window.alert("IMPLEMENTAR!!!"); 
     }
 }
 
-var listaConvidados  = new ListaConvidados();
+var listaConvidados = new ListaConvidados();
