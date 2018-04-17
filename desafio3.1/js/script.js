@@ -92,6 +92,7 @@ class ListaConvidado {
             document.querySelector("input[type=radio]:checked").checked = false;
 
             ehEdicao = false;
+            idEdicao = null;
         }
     }
 
