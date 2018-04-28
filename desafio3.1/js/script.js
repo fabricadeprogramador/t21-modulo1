@@ -1,127 +1,135 @@
-var cont = 0;
-var ehEdicao = false;
-var idEdicao = null;
-
 class ListaConvidado {
-    adicionar() {
 
-        let nomeConvidado = document.getElementById('inputNome').value;
-        let idadeConvidado = document.getElementById('inputIdade').value;
+    constructor(){
+        this.cont = 0;
+        this.idEdicao = null;
+    }
+
+    lerConvidado(){
+        let convidado = {}
+        
+        convidado.nome = document.getElementById('inputNome').value;
+        convidado.idade = document.getElementById('inputIdade').value;
+        
         let elementoSexoSelecionado = document.querySelector("input[type=radio]:checked");
         let sexoConvidado = "";
 
-
         if (elementoSexoSelecionado != null) {
-            sexoConvidado = elementoSexoSelecionado.value;
+            convidado.sexo = elementoSexoSelecionado.value;
         }
 
-        let tabela = document.querySelector("#tbody");
+        return convidado;
+    }
+
+    validar(convidado){
+        
         let erros = "";
 
-        if (nomeConvidado == "") {
+        if (convidado.nome == "") {
             erros += "Campo nome é obrigatório!\n";
         }
 
-        if (idadeConvidado == "") {
+        if (convidado.idade == "") {
             erros += "Campo idade é obrigatório!\n";
         }
 
-        if (sexoConvidado == "") {
+        if (convidado.sexo == "") {
             erros += "Campo sexo obrigatório!\n";
         }
 
+        return erros;
+    }
+
+    inserirLinha(convidado){
+
+        let tabela = document.querySelector("#tbody");
+        let linha = tabela.insertRow(convidado.id);
+
+        linha.setAttribute("id", "linha-" + convidado.id);
+        let celulaNome = linha.insertCell(0);
+        let celulaIdade = linha.insertCell(1);
+        let celulaSexo = linha.insertCell(2);
+        let celulaEditar = linha.insertCell(3);
+        let celulaExcluir = linha.insertCell(4);
+
+        let imagemExcluir = document.createElement("img");
+        imagemExcluir.setAttribute("onclick", "listaConvidado.remover(" + this.cont + ")");
+        imagemExcluir.src = "img/garbage.svg";
+
+        let imagemEditar = document.createElement("img");
+        imagemEditar.setAttribute("onclick", "listaConvidado.editar("+ JSON.stringify(convidado) +")");
+        imagemEditar.src = "img/editar.svg";
+
+        celulaNome.innerHTML = convidado.nome;
+        celulaIdade.innerHTML = convidado.idade;
+        celulaSexo.innerHTML = convidado.sexo;
+
+        celulaEditar.appendChild(imagemEditar);
+        celulaExcluir.appendChild(imagemExcluir);
+
+    }
+
+    removerLinha(id){
+        let linhaARemover = document.getElementById("linha-" + id);
+        linhaARemover.remove();
+    }
+
+    salvar(){
+
+        if(this.idEdicao == null){
+            this.adicionar(this.cont);
+            this.cont++;
+        }else {
+            this.removerLinha(this.idEdicao);
+            this.adicionar(this.idEdicao);
+        }
+
+        this.limparFormulario();
+        this.idEdicao = null;
+
+    }
+
+    adicionar(id) {
+
+        let convidado = this.lerConvidado();
+        convidado.id = id;
+        let erros = this.validar(convidado);
+
         if (erros != "") {
             window.alert(erros);
-        } else if(!ehEdicao){
-            let linha = tabela.insertRow(cont);
-            linha.setAttribute("id", "linha-" + cont);
-            let celulaNome = linha.insertCell(0);
-            let celulaIdade = linha.insertCell(1);
-            let celulaSexo = linha.insertCell(2);
-            let celulaEditar = linha.insertCell(3);
-            let celulaExcluir = linha.insertCell(4);
+            return;
+        } 
 
-            let imagemExcluir = document.createElement("img");
-            imagemExcluir.setAttribute("onclick", "listaConvidado.remover(" + cont + ")");
-            imagemExcluir.src = "img/garbage.svg";
-
-            let imagemEditar = document.createElement("img");
-            imagemEditar.setAttribute("onclick", "listaConvidado.editar('" + nomeConvidado + "','" + idadeConvidado + "','" + sexoConvidado + "','" + cont + "')");
-            imagemEditar.src = "img/editar.svg";
-
-            celulaNome.innerHTML = nomeConvidado;
-            celulaIdade.innerHTML = idadeConvidado;
-            celulaSexo.innerHTML = sexoConvidado;
-            celulaEditar.appendChild(imagemEditar);
-            celulaExcluir.appendChild(imagemExcluir);
-
-            document.getElementById("inputNome").value = "";
-            document.getElementById("inputIdade").value = "";
-            document.querySelector("input[type=radio]:checked").checked = false;
-
-            cont++;
-        }else{
-
-            let elementoEdicao = document.getElementById("linha-" + idEdicao);
-            elementoEdicao.remove();
-
-            let linha = tabela.insertRow(idEdicao);
-            linha.setAttribute("id", "linha-" + idEdicao);
-            let celulaNome = linha.insertCell(0);
-            let celulaIdade = linha.insertCell(1);
-            let celulaSexo = linha.insertCell(2);
-            let celulaEditar = linha.insertCell(3);
-            let celulaExcluir = linha.insertCell(4);
-
-            let imagemExcluir = document.createElement("img");
-            imagemExcluir.setAttribute("onclick", "listaConvidado.remover(" + idEdicao + ")");
-            imagemExcluir.src = "img/garbage.svg";
-
-            let imagemEditar = document.createElement("img");
-            imagemEditar.setAttribute("onclick", "listaConvidado.editar('" + nomeConvidado + "','" + idadeConvidado + "','" + sexoConvidado + "','" + idEdicao + "')");
-            imagemEditar.src = "img/editar.svg";
-
-            celulaNome.innerHTML = nomeConvidado;
-            celulaIdade.innerHTML = idadeConvidado;
-            celulaSexo.innerHTML = sexoConvidado;
-            celulaEditar.appendChild(imagemEditar);
-            celulaExcluir.appendChild(imagemExcluir);
-
-            document.getElementById("inputNome").value = "";
-            document.getElementById("inputIdade").value = "";
-            document.querySelector("input[type=radio]:checked").checked = false;
-
-            ehEdicao = false;
-            idEdicao = null;
-        }
+        this.inserirLinha(convidado);
     }
 
     remover(id) {
         if (window.confirm("Tem certeza que deseja remover este convidado?")) {
-            let linhaARemover = document.getElementById("linha-" + id);
-            linhaARemover.remove();
+            this.removerLinha(id);
         }
     }
 
-    editar(nome, idade, sexo, id) {
-        document.getElementById("inputNome").value = nome;
-        document.getElementById("inputIdade").value = idade;
+    editar(convidado) {
+        
+        document.getElementById("inputNome").value = convidado.nome;
+        document.getElementById("inputIdade").value = convidado.idade;
 
-        if (sexo == "M") {
+        if (convidado.sexo == "M") {
             document.getElementById("inputMasc").checked = true;
         } else {
             document.getElementById("inputFem").checked = true;
         }
 
-        ehEdicao = true;
-        idEdicao = id;
+        this.idEdicao = convidado.id;
+
     }
 
-    limpar() {
+    limparFormulario() {
         document.getElementById("inputNome").value = "";
         document.getElementById("inputIdade").value = "";
         document.querySelector("input[type=radio]:checked").checked = false;
-        ehEdicao = false;
+        this.ehEdicao = false;
+        this.idEdicao = null;
     }
 }
 
