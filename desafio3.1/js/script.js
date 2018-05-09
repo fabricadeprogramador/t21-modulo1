@@ -17,7 +17,7 @@ class ListaConvidado {
         if (elementoSexoSelecionado != null) {
             convidado.sexo = elementoSexoSelecionado.value;
         }
-
+            
         return convidado;
     }
 
