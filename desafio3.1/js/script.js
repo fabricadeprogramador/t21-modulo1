@@ -43,7 +43,7 @@ class ListaConvidado {
     inserirLinha(convidado){
 
         let tabela = document.querySelector("#tbody");
-        let linha = tabela.insertRow(convidado.id);
+        let linha = tabela.insertRow(0);
 
         linha.setAttribute("id", "linha-" + convidado.id);
         let celulaNome = linha.insertCell(0);

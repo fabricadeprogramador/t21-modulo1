@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Estacionamento FDP 2018</title>
+    <link rel="stylesheet" href="css/estacionamento.css">
+    <script src="js/estacionamento.js"></script>
+</head>
+
+<body>
+    <div class="titulo">
+        <h1>Lista de Carros</h1>
+    </div>
+    <div class="container">
+        <div class="input-div">
+            <label for="inputNome" class="input-label">Nome</label>
+            <input type="text" id="inputNome">
+        </div>
+        <div class="input-div">
+            <label for="inputMarca" class="input-label">Marca</label>
+            <input type="text" id="inputMarca">
+        </div>
+        <div class="input-div">
+            <label for="inputAno" class="input-label">Ano</label>
+            <input type="number" id="inputAno">
+        </div>
+
+        <div class="buttons">
+            <button type="button" onclick="estacionamento.salvar()">Salvar</button>
+            <button type="button" onclick="estacionamento.limpar()">Cancelar</button>
+            <button type="button" onclick="estacionamento.relatorio()">Resultado</button>
+        </div>
+    </div>
+
+
+    <div class="div-tabela">
+        <table class="tabela-estacionamento">
+            <thead>
+                <td>Nome</td>
+                <td>Marca</td>
+                <td>Ano</td>
+                <td></td>
+                <td></td>
+            </thead>
+            <tbody id="tableBody">
+
+            </tbody>
+        </table>
+    </div>
+
+    <div class="resultados">
+        <fieldset>
+            <legend>Resultados</legend>
+            <span id="maisVelho"></span>
+            <span id="maisNovo"></span>
+            <span id="media"></span>
+        </fieldset>
+    </div>
+</body>
+
+</html>
