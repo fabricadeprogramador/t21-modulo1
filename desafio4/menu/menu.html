@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Menu - FDP 2018</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <script src="js/menu.js"></script>
+</head>
+
+<body>
+    <div class="menu">
+        <div class="opcoes-menu">
+            <h1>Menu</h1>
+            [1] - Exibir os números ímpares de 0 a 100
+            <br/> [2] - Encontrar o nome secreto
+            <br/> [3] - Ocorrências do número 1 no intervalo
+            <br/> [4] - Encerrar execução
+            <br/>
+        </div>
+        <div class="entrada-menu">
+            <div>
+                <input type="text" placeholder="Digite a opção..." id="menu-op">
+            </div>
+            <div>
+                <button type="button" onclick="menu.selecionarMenu()">Selecionar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="opcao" id="opcao1">
+        <div>
+            <span id="resultado"></span>
+        </div>
+        <div>
+            <button type="button" onclick="menu.voltarMenu()">Voltar</button>
+        </div>
+    </div>
+
+    <div class="opcao" id="opcao2">
+        <div class="op2-input">
+            <h2>Tente descobrir o nome secreto</h2>
+            <label for="op2-nome">Nome: </label>
+            <input type="text" id="op2-nome">
+            <button type="button" onclick="menu.salvarNome()">Adicionar</button>
+            <button type="button" onclick="menu.voltarMenu()">Voltar</button>
+        </div>
+        <div class="res-op2">
+            <span id="res-2"></span>
+        </div>
+    </div>
+
+    <div class="opcao" id="opcao3">
+        <div>
+            <label for="op3-input"> Digite o valor limite: </label>
+            <input type="number" id="op3-input">
+        </div>
+        <div>
+            <button type="button" onclick="menu.ocorrenciasUm()">Ir</button>
+            <button type="button" onclick="menu.voltarMenu()">Voltar</button>
+        </div>
+
+        <div>
+            <span id="res-3"></span>
+            <span id="res-3-2"></span>
+        </div>
+    </div>
+
+    <div class="opcao" id="opcao4">
+        Execução Finalizada!
+        <button type="button" onclick="menu.voltarMenu()">Voltar</button>
+    </div>
+
+</body>
+
+</html>
