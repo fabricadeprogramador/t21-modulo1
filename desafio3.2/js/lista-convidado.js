@@ -23,6 +23,22 @@ class ListaConvidado {
         return convidado;
     }
 
+    buscarConvidados(){
+        this.fazerRequest("GET", "http://localhost:3000/convidados", null);
+    }
+    
+    fazerRequest(method, url, body){
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.open(method, url, false);
+
+        if(body == null){
+            xhttp.send();
+        } else {
+            xhttp.send(body);
+        }
+    }
+
     validar(convidado){
         
         let erros = "";
